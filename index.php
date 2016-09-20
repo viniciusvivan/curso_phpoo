@@ -39,58 +39,51 @@ $clientes[9] = new Cliente("Pablo Grudin", "147.789.123-57", "(43) 7855-3578", "
         <article class="container">
             <table border="1" class="table table-striped">
                 <thead>
-                    <tr>
-                        <?php
-                            if(isset($_GET['ord']) && $_GET['ord'] == "des"){
-                                echo "<th><a href='index.php?ord=asc'>ID ></a></th>";
-                            }else{
-                                echo "<th><a href='index.php?ord=des'>ID <</a></th>";
-                            }
-                        ?>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Telefone</th>
-                        <th>Endreço</th>
-                    </tr>
+                <tr>
+                    <?php
+                    if(isset($_GET['ord']) && $_GET['ord'] == "des"){
+                        echo "<th><a href='index.php?ord=asc'>ID ></a></th>";
+                    }else{
+                        echo "<th><a href='index.php?ord=des'>ID <</a></th>";
+                    }
+                    ?>
+                    <th>Nome</th>
+                </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        if(isset($_GET['ord']) && $_GET['ord'] == "des"){
-                            for ($k = 9; $k >= 0; $k--) {
-                                $id = $k;
-                                $nome = $clientes[$k]->getNome();
-                                $cpf = $clientes[$k]->getCpf();
-                                $telefone = $clientes[$k]->getTelefone();
-                                $endereco = $clientes[$k]->getEndereco();
-                                echo "
+                <?php
+                if(isset($_GET['ord']) && $_GET['ord'] == "des"){
+                    for ($k = 9; $k >= 0; $k--) {
+                        $id = $k;
+                        $nome = $clientes[$k]->getNome();
+                        $cpf = $clientes[$k]->getCpf();
+                        $telefone = $clientes[$k]->getTelefone();
+                        $endereco = $clientes[$k]->getEndereco();
+                        $link = "detalhes.php?id=$k&nome=$nome&cpf=$cpf&tel=$telefone&end=$endereco";
+                        echo "
                                 <tr>
                                     <th>$k</th>
-                                    <th>$nome</th>
-                                    <th>$cpf</th>
-                                    <th>$telefone</th>
-                                    <th>$endereco</th>
+                                    <th><a href='$link'.$link>$nome</a></th>
                                 </tr>
                             ";
-                            }
-                        }else{
-                            for ($k=0; $k < 10; $k++) {
-                                $id = $k;
-                                $nome = $clientes[$k]->getNome();
-                                $cpf = $clientes[$k]->getCpf();
-                                $telefone = $clientes[$k]->getTelefone();
-                                $endereco = $clientes[$k]->getEndereco();
-                                echo "
+                    }
+                }else{
+                    for ($k=0; $k < 10; $k++) {
+                        $id = $k;
+                        $nome = $clientes[$k]->getNome();
+                        $cpf = $clientes[$k]->getCpf();
+                        $telefone = $clientes[$k]->getTelefone();
+                        $endereco = $clientes[$k]->getEndereco();
+                        $link = "detalhes.php?id=$k&nome=$nome&cpf=$cpf&tel=$telefone&end=$endereco";
+                        echo "
                                 <tr>
                                     <th>$k</th>
-                                    <th>$nome</th>
-                                    <th>$cpf</th>
-                                    <th>$telefone</th>
-                                    <th>$endereco</th>
+                                    <th><a href='$link'>$nome</a></th>
                                 </tr>
                             ";
-                            }
-                        }
-                    ?>
+                    }
+                }
+                ?>
                 </tbody>
             </table>
         </article>

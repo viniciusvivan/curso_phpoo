@@ -40,4 +40,11 @@ class Cliente implements clienteInterface
         return $this->endereco;
     }
 
+    public function mostraDados(){
+        echo "Nome: ". $this->nome . "</br>";
+        echo "CPF: ". $this->cpf . "</br>";
+        echo "Telefone: ". $this->telefone . "</br>";
+        echo "Endreço: ". $this->endereco . "</br>";
+    }
+
 }
