@@ -1,6 +1,6 @@
 <?php
-
-include_once("Cliente.php");
+require_once("src/CED/cliente/types/ClienteFisico.php");
+require_once("src/CED/cliente/types/ClienteJuridico.php");
 
 $clientes = array(
     'nome' => array(),
@@ -9,16 +9,16 @@ $clientes = array(
     'endereco' => array()
 );
 
-$clientes[0] = new Cliente("José De Alencar", "045.558.485-36", "(44) 8574-5214", "Rua Fulano de tal");
-$clientes[1] = new Cliente("Maria Isabel", "524.785.878-78", "(43) 9958-5421", "Rua sicrano de tal");
-$clientes[2] = new Cliente("Luiz Felipe", "456.789.213-45", "(11) 5522-2457", "Rua tavares");
-$clientes[3] = new Cliente("Aparecida Ramos", "741.854.524-12", "(82) 7777-2420", "Rua de pedra");
-$clientes[4] = new Cliente("Jorge Luiz", "789.153.257-45", "(45) 8574-5888", "Rua das flores");
-$clientes[5] = new Cliente("Antonio da Silva", "257.257.456-84", "(78) 4568-7887", "Rua sigilo");
-$clientes[6] = new Cliente("Bartolomeu Ruiz", "045.257.878-00", "(44) 2125-2254", "Rua do vale");
-$clientes[7] = new Cliente("Alexander Tomé", "045.456.457-45", "(11) 9987-7882", "Rua logo ali");
-$clientes[8] = new Cliente("Lurdes Ferreira", "057.458.478-36", "(11) 9985-4587", "Rua de baixo");
-$clientes[9] = new Cliente("Pablo Grudin", "147.789.123-57", "(43) 7855-3578", "Rua Maoeee");
+$clientes[0] = new ClienteFisico("José De Alencar", "045.558.485-36", "(44) 8574-5214", "Rua Fulano de tal");
+$clientes[1] = new ClienteFisico("Maria Isabel", "524.785.878-78", "(43) 9958-5421", "Rua sicrano de tal");
+$clientes[2] = new ClienteFisico("Luiz Felipe", "456.789.213-45", "(11) 5522-2457", "Rua tavares");
+$clientes[3] = new ClienteJuridico("Syma Informática", "98.918.396/0001-55", "(82) 7777-2420", "Rua de pedra");
+$clientes[4] = new ClienteFisico("Jorge Luiz", "789.153.257-45", "(45) 8574-5888", "Rua das flores");
+$clientes[5] = new ClienteJuridico("Aldo Componentes", "82.583.904/0001-51", "(78) 4568-7887", "Rua sigilo");
+$clientes[6] = new ClienteJuridico("Supermercado Cidade Canção", "48.191.461/0001-15", "(44) 2125-2254", "Rua do vale");
+$clientes[7] = new ClienteFisico("Alexander Tomé", "045.456.457-45", "(11) 9987-7882", "Rua logo ali");
+$clientes[8] = new ClienteFisico("Lurdes Ferreira", "057.458.478-36", "(11) 9985-4587", "Rua de baixo");
+$clientes[9] = new ClienteJuridico("Frango Frito", "69.301.027/0001-10", "(43) 7855-3578", "Rua Maoeee");
 
 ?>
 
@@ -54,12 +54,14 @@ $clientes[9] = new Cliente("Pablo Grudin", "147.789.123-57", "(43) 7855-3578", "
                 <?php
                 if(isset($_GET['ord']) && $_GET['ord'] == "des"){
                     for ($k = 9; $k >= 0; $k--) {
+                        $tipo = get_class($clientes[$k]);
                         $id = $k;
                         $nome = $clientes[$k]->getNome();
-                        $cpf = $clientes[$k]->getCpf();
+                        if($tipo == ClienteFisico::class) $cadastro = $clientes[$k]->getCpf();
+                        else $cadastro = $clientes[$k]->getCnpj();
                         $telefone = $clientes[$k]->getTelefone();
                         $endereco = $clientes[$k]->getEndereco();
-                        $link = "detalhes.php?id=$k&nome=$nome&cpf=$cpf&tel=$telefone&end=$endereco";
+                        $link = "detalhes.php?id=$k&nome=$nome&cpf=$cadastro&tel=$telefone&end=$endereco";
                         echo "
                                 <tr>
                                     <th>$k</th>
@@ -69,12 +71,14 @@ $clientes[9] = new Cliente("Pablo Grudin", "147.789.123-57", "(43) 7855-3578", "
                     }
                 }else{
                     for ($k=0; $k < 10; $k++) {
+                        $tipo = get_class($clientes[$k]);
                         $id = $k;
                         $nome = $clientes[$k]->getNome();
-                        $cpf = $clientes[$k]->getCpf();
+                        if($tipo == ClienteFisico::class) $cadastro = $clientes[$k]->getCpf();
+                        else $cadastro = $clientes[$k]->getCnpj();
                         $telefone = $clientes[$k]->getTelefone();
                         $endereco = $clientes[$k]->getEndereco();
-                        $link = "detalhes.php?id=$k&nome=$nome&cpf=$cpf&tel=$telefone&end=$endereco";
+                        $link = "detalhes.php?id=$k&nome=$nome&cpf=$cadastro&tel=$telefone&end=$endereco";
                         echo "
                                 <tr>
                                     <th>$k</th>
