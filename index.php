@@ -1,6 +1,10 @@
 <?php
-require_once("src/CED/cliente/types/ClienteFisico.php");
-require_once("src/CED/cliente/types/ClienteJuridico.php");
+define('CLASS_DIR', 'src/');
+set_include_path(get_include_path().PATH_SEPARATOR.CLASS_DIR);
+spl_autoload_register();
+
+use CED\Cliente\Types\ClienteFisico;
+use CED\Cliente\Types\ClienteJuridico;
 
 $clientes = array(
     'nome' => array(),
@@ -20,6 +24,21 @@ $clientes[7] = new ClienteFisico("Alexander Tomé", "045.456.457-45", "(11) 9987
 $clientes[8] = new ClienteFisico("Lurdes Ferreira", "057.458.478-36", "(11) 9985-4587", "Rua de baixo");
 $clientes[9] = new ClienteJuridico("Frango Frito", "69.301.027/0001-10", "(43) 7855-3578", "Rua Maoeee");
 
+
+$clientes[4]->setEndCobranca("Rua Dos lirios, 592, Maringá/PR");
+$clientes[7]->setEndCobranca("Rua Francisco Chaves, 204, Maringá/PR");
+
+
+$clientes[0]->setNivelImp('5 *****');
+$clientes[1]->setNivelImp('1 *');
+$clientes[2]->setNivelImp('2 **');
+$clientes[3]->setNivelImp('5 *****');
+$clientes[4]->setNivelImp('4 ****');
+$clientes[5]->setNivelImp('3 ***');
+$clientes[6]->setNivelImp('1 *');
+$clientes[7]->setNivelImp('2 **');
+$clientes[8]->setNivelImp('4 ****');
+$clientes[9]->setNivelImp('3 ***');
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +67,7 @@ $clientes[9] = new ClienteJuridico("Frango Frito", "69.301.027/0001-10", "(43) 7
                     }
                     ?>
                     <th>Nome</th>
+                    <th>Tipo de Cliente</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -57,15 +77,25 @@ $clientes[9] = new ClienteJuridico("Frango Frito", "69.301.027/0001-10", "(43) 7
                         $tipo = get_class($clientes[$k]);
                         $id = $k;
                         $nome = $clientes[$k]->getNome();
-                        if($tipo == ClienteFisico::class) $cadastro = $clientes[$k]->getCpf();
-                        else $cadastro = $clientes[$k]->getCnpj();
+                        $cobranca = $clientes[$k]->getEndCobranca();
+                        $importancia = $clientes[$k]->getNivelImp();
+                        if($tipo == ClienteFisico::class){
+                            $cadastro = $clientes[$k]->getCpf();
+                            $tipo = "Pessoa Fisica";
+                        }
+                        else{
+                            $cadastro = $clientes[$k]->getCnpj();
+                            $tipo = "Pessoa Juridica";
+                        }
                         $telefone = $clientes[$k]->getTelefone();
                         $endereco = $clientes[$k]->getEndereco();
-                        $link = "detalhes.php?id=$k&nome=$nome&cpf=$cadastro&tel=$telefone&end=$endereco";
+                        $link = "detalhes.php?id=$k&nome=$nome&cadastro=$cadastro&tel=$telefone&end=$endereco
+                                 &cob=$cobranca&imp=$importancia";
                         echo "
                                 <tr>
                                     <th>$k</th>
                                     <th><a href='$link'.$link>$nome</a></th>
+                                    <th>$tipo</th>
                                 </tr>
                             ";
                     }
@@ -74,15 +104,24 @@ $clientes[9] = new ClienteJuridico("Frango Frito", "69.301.027/0001-10", "(43) 7
                         $tipo = get_class($clientes[$k]);
                         $id = $k;
                         $nome = $clientes[$k]->getNome();
-                        if($tipo == ClienteFisico::class) $cadastro = $clientes[$k]->getCpf();
-                        else $cadastro = $clientes[$k]->getCnpj();
+                        $cobranca = $clientes[$k]->getEndCobranca();
+                        $importancia = $clientes[$k]->getNivelImp();
+                        if ($tipo == ClienteFisico::class) {
+                            $cadastro = $clientes[$k]->getCpf();
+                            $tipo = "Pessoa Fisica";
+                        } else {
+                            $cadastro = $clientes[$k]->getCnpj();
+                            $tipo = "Pessoa Juridica";
+                        }
                         $telefone = $clientes[$k]->getTelefone();
                         $endereco = $clientes[$k]->getEndereco();
-                        $link = "detalhes.php?id=$k&nome=$nome&cpf=$cadastro&tel=$telefone&end=$endereco";
+                        $link = "detalhes.php?id=$k&nome=$nome&cadastro=$cadastro&tel=$telefone&end=$endereco
+                                 &cob=$cobranca&imp=$importancia";
                         echo "
                                 <tr>
                                     <th>$k</th>
-                                    <th><a href='$link'>$nome</a></th>
+                                    <th><a href='$link'.$link>$nome</a></th>
+                                    <th>$tipo</th>
                                 </tr>
                             ";
                     }

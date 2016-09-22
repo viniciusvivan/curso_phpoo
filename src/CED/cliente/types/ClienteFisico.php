@@ -1,9 +1,9 @@
 <?php
-namespace CED\cliente\types;
+namespace CED\Cliente\Types;
 
-use \CED\cliente\ClienteAbstract;
-use \CED\cliente\interfaces\clienteFisicoInterface;
-use \CED\cliente\interfaces\EndCobrancaInterface;
+use \CED\Cliente\ClienteAbstract;
+use \CED\Cliente\Interfaces\clienteFisicoInterface;
+use \CED\Cliente\Interfaces\EndCobrancaInterface;
 
 class ClienteFisico extends ClienteAbstract implements clienteFisicoInterface, EndCobrancaInterface
 {

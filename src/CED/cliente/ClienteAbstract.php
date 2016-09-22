@@ -1,9 +1,9 @@
 <?php
 
-namespace CED\cliente;
+namespace CED\Cliente;
 
-use \CED\cliente\interfaces\clienteInterface;
-use \CED\cliente\interfaces\NivelImpInterface;
+use \CED\Cliente\Interfaces\clienteInterface;
+use \CED\Cliente\Interfaces\NivelImpInterface;
 
 abstract class ClienteAbstract implements clienteInterface, NivelImpInterface
 {
@@ -58,5 +58,4 @@ abstract class ClienteAbstract implements clienteInterface, NivelImpInterface
     {
         $this->nivelImp = $nivelImp;
     }
-
 }

@@ -19,25 +19,31 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>CPF</th>
+                    <th>CPF/CNPJ</th>
                     <th>Telefone</th>
                     <th>Endereço</th>
+                    <th>Endereço De Cobrança</th>
+                    <th>Nível de Importância</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
                     $id = $_GET['id'];
-                    $nome = $_GET['nome'];;
-                    $cpf = $_GET['cpf'];;
-                    $telefone = $_GET['tel'];;
-                    $endereco = $_GET['end'];;
+                    $nome = $_GET['nome'];
+                    $cadastro = $_GET['cadastro'];
+                    $telefone = $_GET['tel'];
+                    $endereco = $_GET['end'];
+                    $cobranca = $_GET['cob'];
+                    $importancia = $_GET['imp'];
                     echo "
                     <tr>
                         <th>$id</th>
                         <th>$nome</th>
-                        <th>$cpf</th>
+                        <th>$cadastro</th>
                         <th>$telefone</th>
                         <th>$endereco</th>
+                        <th>$cobranca</th>
+                        <th>$importancia</th>
                     </tr>
                     ";
                 ?>

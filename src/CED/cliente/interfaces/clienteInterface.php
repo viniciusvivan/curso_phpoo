@@ -1,6 +1,6 @@
 <?php
 
-namespace CED\cliente\interfaces;
+namespace CED\Cliente\Interfaces;
 
 interface clienteInterface
 {

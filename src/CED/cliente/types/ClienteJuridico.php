@@ -1,19 +1,19 @@
 <?php
-namespace CED\cliente\types;
+namespace CED\Cliente\Types;
 
-use \CED\cliente\ClienteAbstract;
-use \CED\cliente\interfaces\clienteJuridicoInterface;
-use \CED\cliente\interfaces\EndCobrancaInterface;
+use \CED\Cliente\ClienteAbstract;
+use \CED\Cliente\Interfaces\clienteJuridicoInterface;
+use \CED\Cliente\Interfaces\EndCobrancaInterface;
 
 class ClienteJuridico extends ClienteAbstract implements clienteJuridicoInterface, EndCobrancaInterface
 {
     private $cnpj;
     private $endCobranca;
 
-    public function __construct($nome, $cpf, $telefone, $endereco)
+    public function __construct($nome, $cnpj, $telefone, $endereco)
     {
         parent::__construct($nome, $telefone, $endereco);
-        $this->cpf = $cpf;
+        $this->cnpj = $cnpj;
     }
 
     public function getCnpj()
@@ -30,5 +30,4 @@ class ClienteJuridico extends ClienteAbstract implements clienteJuridicoInterfac
     {
         $this->endCobranca = $endCobranca;
     }
-
 }
