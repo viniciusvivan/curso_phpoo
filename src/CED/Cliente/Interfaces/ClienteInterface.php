@@ -2,7 +2,7 @@
 
 namespace CED\Cliente\Interfaces;
 
-interface clienteInterface
+interface ClienteInterface
 {
     public function getNome();
     public function setNome($nome);

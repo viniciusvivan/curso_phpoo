@@ -2,10 +2,10 @@
 namespace CED\Cliente\Types;
 
 use \CED\Cliente\ClienteAbstract;
-use \CED\Cliente\Interfaces\clienteJuridicoInterface;
+use \CED\Cliente\Interfaces\ClienteJuridicoInterface;
 use \CED\Cliente\Interfaces\EndCobrancaInterface;
 
-class ClienteJuridico extends ClienteAbstract implements clienteJuridicoInterface, EndCobrancaInterface
+class ClienteJuridico extends ClienteAbstract implements ClienteJuridicoInterface, EndCobrancaInterface
 {
     private $cnpj;
     private $endCobranca;

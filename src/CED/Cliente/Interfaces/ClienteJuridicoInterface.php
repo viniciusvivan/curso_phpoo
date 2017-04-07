@@ -2,7 +2,7 @@
 
 namespace CED\Cliente\Interfaces;
 
-interface clienteJuridicoInterface
+interface ClienteJuridicoInterface
 {
     public function getCnpj();
 }

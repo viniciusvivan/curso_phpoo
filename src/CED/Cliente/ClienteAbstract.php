@@ -2,10 +2,10 @@
 
 namespace CED\Cliente;
 
-use \CED\Cliente\Interfaces\clienteInterface;
+use \CED\Cliente\Interfaces\ClienteInterface;
 use \CED\Cliente\Interfaces\NivelImpInterface;
 
-abstract class ClienteAbstract implements clienteInterface, NivelImpInterface
+abstract class ClienteAbstract implements ClienteInterface, NivelImpInterface
 {
     protected $nome;
     protected $telefone;

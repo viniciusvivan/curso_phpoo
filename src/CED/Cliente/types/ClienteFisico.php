@@ -2,10 +2,10 @@
 namespace CED\Cliente\Types;
 
 use \CED\Cliente\ClienteAbstract;
-use \CED\Cliente\Interfaces\clienteFisicoInterface;
+use \CED\Cliente\Interfaces\ClienteFisicoInterface;
 use \CED\Cliente\Interfaces\EndCobrancaInterface;
 
-class ClienteFisico extends ClienteAbstract implements clienteFisicoInterface, EndCobrancaInterface
+class ClienteFisico extends ClienteAbstract implements ClienteFisicoInterface, EndCobrancaInterface
 {
     private $cpf;
     private $endCobranca;
