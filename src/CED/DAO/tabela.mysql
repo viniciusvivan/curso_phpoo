@@ -1,0 +1,9 @@
+CREATE TABLE `curso_phpoo`.`cliente` (
+  `id_cliente` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(255) NOT NULL,
+  `cpf_cnpj` VARCHAR(20) NOT NULL,
+  `fone` VARCHAR(13) NOT NULL,
+  `endereco` VARCHAR(255) NOT NULL,
+  `endereco_cobranca` VARCHAR(255) NULL,
+  `nivel_importancia` VARCHAR(5) NULL,
+  PRIMARY KEY (`id_cliente`));
